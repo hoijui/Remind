@@ -29,7 +29,7 @@ Anything after the __EOF__ marker is completely ignored.
 ignore them for now and skip to the section "Reminder Files".
 .TP
 .B \-n
-The \fB\-n\fR option causes \fBRemind\fR to print the \fBnext\fR occurrence
+print the \fBnext\fR occurrence
 of each reminder in a simple calendar format.  You can sort this by
 date by piping the output through \fBsort(1)\fR.
 .TP
@@ -38,11 +38,11 @@ Runs \fBRemind\fR in "purge" mode to get rid of expired reminders.
 See the section PURGE MODE for details.
 .TP
 .B \-r
-The \fB\-r\fR option disables \fBRUN\fR directives and the \fBshell()\fR
+disables \fBRUN\fR directives and the \fBshell()\fR
 function.  As of Remind 3.00.17, using \fB\-u\fR implies \fB\-r\fR.
 .TP
 .B \-c\fI[flags]\fIn\fR
-The \fB\-c\fR option causes \fBRemind\fR to produce a calendar that is
+produce a calendar that is
 sent to standard output.  If you supply a number \fIn\fR, then a
 calendar will be generated for \fIn\fR months, starting with the
 current month.  By default, a calendar for only the current month is
@@ -56,12 +56,12 @@ causes a calendar for \fIn\fR
 weeks to be produced.
 .TP
 .B 'a'
-causes \fBRemind\fR to display reminders on the calendar on the
+display reminders on the calendar on the
 day they actually occur \fIas well as\fR on any preceding days
 specified by the reminder's \fIdelta\fR.
 .TP
 .B 'l'
-causes \fBRemind\fR to use VT100 line-drawing characters to draw
+use VT100 line-drawing characters to draw
 the calendar.  The characters are hard-coded and will only work
 on terminals that emulate the VT00 line-drawing character set.
 .TP
@@ -71,7 +71,7 @@ characters to draw the calendar.  The characters are hard-coded and will
 only work on terminals that are set to UTF-8 character encoding.
 .TP
 .B 'c'
-causes \fBRemind\fR to use VT100 escape sequences to approximate
+use VT100 escape sequences to approximate
 SPECIAL COLOR reminders.  The approximation is (of necessity) very
 coarse, because the VT100 only has eight different color sequences,
 each with one of two brightnesses.  A color component greater than
@@ -80,7 +80,7 @@ greater than 128, the color is considered "bright".
 
 .TP
 .B \-w\fR\fIcol\fR[,\fIpad\fR[,\fIspc\fR]]]
-The \fB\-w\fR option specifies the output width, padding and spacing
+specifies the output width, padding and spacing
 of the formatted calendar output.  \fICol\fR specifies the number of
 columns in the output device, and defaults to 80.  \fIPad\fR specifies
 how many lines to use to "pad" empty calendar boxes.  This defaults to
@@ -95,7 +95,7 @@ provide the correct number of commas.  Don't use any spaces in the option.
 .RE
 .TP
 .B \-s\fR[\fBa\fR]\fIn\fR
-The \fB\-s\fR option is very similar to the \fB\-c\fR option, except
+very similar to the \fB\-c\fR option, except
 that the output calendar is not formatted.  It is listed in a "simple
 format" that can be used as input for more sophisticated calendar-drawing
 programs.  If \fIn\fR starts with "+", then it is interpreted as a number
@@ -107,7 +107,7 @@ day they actually occur \fIas well as\fR on any preceding days specified
 by the reminder's \fIdelta\fR.
 .TP
 .B \-p\fR[\fBa\fR]\fIn\fR
-The \fB\-p\fR option is very similar to the \fB\-s\fR option, except
+very similar to the \fB\-s\fR option, except
 that the output contains additional information for use by the
 \fBRem2PS\fR program, which creates a PostScript calendar.  For this
 option, \fIn\fR cannot start with "+"; it must specify a number of months.
@@ -119,28 +119,28 @@ by the reminder's \fIdelta\fR.
 
 .TP
 .B \-l
-If you use the \-l option in conjunction with the \-p option, then
+If used in conjunction with the \-p option, then
 \fBRemind\fR outputs additional information for back-end programs such
 as \fBrem2ps\fR.  This additional information lets the back-end programs
 correlate a reminder with the source file and line number that produced
 it.
 .TP
 .B \-m
-The \fB\-m\fR option causes the \fB\-c\fR or \fB\-p\fR options to produce
+causes the \fB\-c\fR or \fB\-p\fR options to produce
 a calendar whose first column is Monday rather than Sunday.
 (This conforms to the international standard.)
 .TP
 .B \-v
-The \fB\-v\fR option makes the output of \fBRemind\fR slightly more verbose.
+makes the output of \fBRemind\fR slightly more verbose.
 Currently, this causes \fBRemind\fR to echo a bad line in case of an
 error, and to print a security message if a script tests the
 $RunOff system variable.
 .TP
 .B \-o
-The \fB\-o\fR option causes \fBRemind\fR to ignore all \fBONCE\fR directives.
+ignore all \fBONCE\fR directives.
 .TP
 .B \-t
-The \fB\-t\fR option causes \fBRemind\fR to trigger all non-expired reminders,
+trigger all non-expired reminders,
 regardless of the \fIdelta\fR supplied for each reminder.
 .TP
 .B \-t\fR\fIn\fR
@@ -149,13 +149,13 @@ If you supply a number \fIn\fR after the \fB\-t\fR option, then
 of \fIn\fR days and triggers reminders accordingly.
 .TP
 .B \-h
-The \fB\-h\fR option ("hush...") suppresses certain warning and information
+("hush...") suppresses certain warning and information
 messages.  In particular, if no reminders are triggered, this mode
 produces no output.
 .TP
 .B \-a
-The \fB\-a\fR option causes \fBRemind\fR not to immediately trigger
-timed reminders that trigger on the current day.  It also causes
+do not immediately trigger
+timed reminders that trigger on the current day.  This also causes
 \fBRemind\fR not to place timed reminders in a calendar.  If you
 supply two or more \fB\-a\fR options, then \fBRemind\fR \fIwill\fR
 trigger timed reminders that are in the future, but will not trigger
@@ -165,20 +165,20 @@ reminders in the calendar if at least one \fB\-a\fR option is used.)
 
 .TP
 \fB\-q\fR
-The \fB\-q\fR option causes \fBRemind\fR not to queue timed reminders
+do not queue timed reminders
 for later execution.
 .TP
 \fB\-f\fR
-The \fB\-f\fR option causes \fBRemind\fR to remain in the foreground
+remain in the foreground
 when processing queued reminders, rather than forking off
 a background process to handle them.
 .TP
 .B \-e
-The \fB\-e\fR option diverts error messages (normally sent to the
+divert error messages (normally sent to the
 standard error stream) to the standard output stream.
 .TP
 .B \-d\fR\fIchars\fR
-The \fB-d\fR option enables certain debugging modes.  The \fIchars\fR
+enable certain debugging modes.  The \fIchars\fR
 specify which modes to enable:
 .RS 2
 .TP
@@ -276,7 +276,7 @@ It does not change the effective uid or gid.
 .RE
 .TP
 \fB-y\fR
-Causes \fBRemind\fR to synthesize a tag for any reminder that lacks a
+synthesize a tag for any reminder that lacks a
 TAG clause.
 .TP
 \fB\-i\fR\fIvar\fR\fB=\fR\fIexpr\fR
