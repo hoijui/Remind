@@ -136,7 +136,7 @@ void IssueSortedReminders(void)
 	switch(cur->typ) {
 	case MSG_TYPE:
 	    if (MsgCommand) {
-		DoMsgCommand(MsgCommand, cur->text);
+		DoMsgCommand(MsgCommand, cur->text, "");
             } else {
 		if (cur->trigdate != olddate) {
 		    IssueSortBanner(cur->trigdate);

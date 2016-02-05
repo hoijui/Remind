@@ -881,7 +881,7 @@ int TriggerReminder(ParsePtr p, Trigger *t, TimeTrig *tim, int jul)
     case MSG_TYPE:
     case PASSTHRU_TYPE:
 	if (MsgCommand) {
-	    DoMsgCommand(MsgCommand, DBufValue(&buf));
+	    DoMsgCommand(MsgCommand, DBufValue(&buf), DBufValue(&(t->tags)));
 	} else {
 	    printf("%s", DBufValue(&buf));
 	}
@@ -1075,7 +1075,7 @@ static int ParsePriority(ParsePtr s, Trigger *t)
 /*  Execute the '-k' command, escaping shell chars in message. */
 /*                                                             */
 /***************************************************************/
-int DoMsgCommand(char const *cmd, char const *msg)
+int DoMsgCommand(char const *cmd, char const *msg, char const *tags)
 {
     int r;
     int i, l;
@@ -1105,12 +1105,20 @@ int DoMsgCommand(char const *cmd, char const *msg)
     /* Do "%s" substitution */
     l = strlen(cmd);
     for (i=0; i<l; i++) {
-	if (cmd[i] == '%' && cmd[i+1] == 's') {
+    if (cmd[i] == '%') {
+	if (cmd[i+1] == 's') {
 	    ++i;
 	    if (DBufPuts(&execBuffer, msg) != OK) {
 		r = E_NO_MEM;
 		goto finished;
 	    }
+	} else if (cmd[i+1] == 't') {
+	    ++i;
+	    if (DBufPuts(&execBuffer, tags) != OK) {
+		r = E_NO_MEM;
+		goto finished;
+	    }
+	}
 	} else {
 	    if (DBufPutc(&execBuffer, cmd[i]) != OK) {
 		r = E_NO_MEM;

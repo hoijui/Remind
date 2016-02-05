@@ -225,7 +225,10 @@ command.  Defaults to 150.
 Instead of simply printing \fBMSG\fR-type
 reminders, this causes them to be passed to the specific \fIcmd\fR.
 You must use '%s' where you want the body to appear, and may need to
-enclose this option in quotes.  Note that all shell characters in the
+enclose this option in quotes.
+You can also use '%t', which will be replaced by a comma separated
+list of the tags, or an empty string, if the message has no tags.
+Note that all shell characters in the
 body of the reminder are escaped with a backslash, and the entire body
 of the reminder is passed as a single argument.  Note that this option
 \fBoverrides\fR the \fB\-r\fR option and the \fBRUN OFF\fR command.

@@ -104,7 +104,7 @@ void DestroyVars (int all);
 int PreserveVar (char const *name);
 int DoPreserve  (Parser *p);
 int DoSatRemind (Trigger *trig, TimeTrig *tim, ParsePtr p);
-int DoMsgCommand (char const *cmd, char const *msg);
+int DoMsgCommand (char const *cmd, char const *msg, char const *tags);
 int ParseNonSpaceChar (ParsePtr p, int *err, int peek);
 unsigned int HashVal (char const *str);
 int DateOK (int y, int m, int d);
