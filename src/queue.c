@@ -231,6 +231,8 @@ void HandleQueuedReminders(void)
 	    CreateParser(q->text, &p);
 	    trig.typ = q->typ;
 	    strcpy(trig.passthru, q->passthru);
+	    DBufInit(&(trig.tags));
+	    DBufPuts(&(trig.tags), DBufValue(&(q->tags)));
 	    RunDisabled = q->RunDisabled;
 	    if (Daemon < 0) {
 		printf("NOTE reminder %s",
